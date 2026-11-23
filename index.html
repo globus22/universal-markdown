@@ -15,20 +15,21 @@
 <body>
   <div class="shell">
     <header class="topbar">
-      <a class="brand" href="./" aria-label="Universal Markdown">
-        <span class="brand-mark">[MD]</span>
-        <span><b>Universal Markdown</b><small>Documents → clean Markdown</small></span>
+      <a class="brand" href="./" aria-label="Universal Tools">
+        <span class="mark">[MD]</span>
+        <span><strong>Universal Tools</strong><small>browser-first · локально</small></span>
       </a>
-      <div class="top-actions"><a class="ghost-btn" href="./photo.html" style="text-decoration:none;white-space:nowrap">[IMG] Photo Studio ↗</a>
-        <span class="privacy-badge">🔒 локально в браузере</span>
-        <button class="ghost-btn hidden" id="installBtn" type="button">Установить приложение</button>
-      </div>
+      <nav class="nav" aria-label="Инструменты">
+        <a href="./" class="current" aria-current="page">[MD] Документы</a>
+        <a href="./photo.html">[IMG] Фотографии</a>
+      </nav>
     </header>
 
     <section class="hero">
       <div class="eyebrow">[MD] · browser utility</div>
       <h1>Документ → чистый Markdown → готово для LLM.</h1>
       <p>DOCX, PDF, PPTX, XLSX, HTML, CSV, TXT и изображения. OCR для сканов, очистка структуры и разбиение больших документов — <strong>без загрузки ваших файлов на сервер.</strong></p>
+      <div class="hero-install"><button class="ghost-btn hidden" id="installBtn" type="button">Установить приложение</button></div>
     </section>
 
     <main class="app-card">
