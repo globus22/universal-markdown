@@ -7,7 +7,7 @@ const types = {'image/jpeg':'jpg','image/png':'png','image/webp':'webp','image/a
 const human = n => n < 1024 ? n+' B' : n < 1048576 ? (n/1024).toFixed(1)+' KB' : (n/1048576).toFixed(2)+' MB';
 const nameOnly = name => name.replace(/\.[^.]+$/,'').replace(/[\\/:*?"<>|]/g,'_');
 let noticeTimer;
-function notice(message,error=false) {let node=$('status'); node.textContent=message;node.className='status show'+(error?' error':'');clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>node.className='status',9000);}
+function notice(message,error=false) {let node=$('status'); node.textContent=message;node.className='notice show '+(error?'error':'info');clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>node.className='notice',9000);}
 const item = () => state.items.find(x=>x.id===state.active);
 const bounds = x => x.s.rotate % 180===0 ? [x.bitmap.width,x.bitmap.height] : [x.bitmap.height,x.bitmap.width];
 function outputDims(x) {
@@ -235,9 +235,9 @@ canvas.addEventListener('pointercancel',()=>state.drag=null);
 $('pickBtn').onclick=()=>$('fileInput').click();
 $('fileInput').onchange=e=>{addFiles([...e.target.files]);e.target.value='';};
 const drop=$('dropZone');
-drop.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('drag');});
-drop.addEventListener('dragleave',()=>drop.classList.remove('drag'));
-drop.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('drag');addFiles([...e.dataTransfer.files]);});
+drop.addEventListener('dragover',e=>{e.preventDefault();drop.classList.add('dragging');});
+drop.addEventListener('dragleave',()=>drop.classList.remove('dragging'));
+drop.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('dragging');addFiles([...e.dataTransfer.files]);});
 $('clearBtn').onclick=()=>{
  for(const x of state.items){URL.revokeObjectURL(x.url);x.bitmap.close();}
  state.items=[];state.active=null;renderStrip();$('emptyPreview').classList.remove('hidden');notice('Список очищен.');

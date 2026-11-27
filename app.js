@@ -3,14 +3,14 @@
 
   const $ = s => document.querySelector(s);
   const $$ = s => [...document.querySelectorAll(s)];
-  const state = { files: [], activeId: null, mode: 'standard', ocrWorker: null, ocrWorkerLang: null, installPrompt: null };
+  const state = { files: [], activeId: null, mode: 'standard', ocrWorker: null, ocrWorkerLang: null };
 
   const els = {
     fileInput: $('#fileInput'), dropZone: $('#dropZone'), workspace: $('#workspace'), fileList: $('#fileList'),
     editor: $('#markdownEditor'), preview: $('#preview'), info: $('#info'), activeName: $('#activeName'), stats: $('#stats'),
     copyBtn: $('#copyBtn'), downloadBtn: $('#downloadBtn'), bundleBtn: $('#bundleBtn'), zipBtn: $('#zipBtn'), clearAll: $('#clearAll'),
     notice: $('#notice'), llmSetting: $('#llmSetting'), chunkSize: $('#chunkSize'), ocrMode: $('#ocrMode'), ocrLang: $('#ocrLang'),
-    progressLine: $('#progressLine'), progressBar: $('#progressBar'), installBtn: $('#installBtn')
+    progressLine: $('#progressLine'), progressBar: $('#progressBar')
   };
 
   if (window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
@@ -567,13 +567,6 @@
     if (state.ocrWorker) { try { await state.ocrWorker.terminate(); } catch {} state.ocrWorker = null; state.ocrWorkerLang = null; }
   });
 
-  window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); state.installPrompt = e; els.installBtn.classList.remove('hidden'); });
-  els.installBtn.addEventListener('click', async () => {
-    if (!state.installPrompt) return; state.installPrompt.prompt(); await state.installPrompt.userChoice; state.installPrompt = null; els.installBtn.classList.add('hidden');
-  });
-  window.addEventListener('appinstalled', () => { els.installBtn.classList.add('hidden'); showNotice('[MD] установлен как приложение.', 'info', 3000); });
-
   window.addEventListener('pagehide', () => { if (state.ocrWorker) { try { state.ocrWorker.terminate(); } catch {} } });
-  if ('serviceWorker' in navigator && location.protocol !== 'file:') navigator.serviceWorker.register('./sw.js').catch(() => {});
   render();
 })();
