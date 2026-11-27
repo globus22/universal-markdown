@@ -6,10 +6,11 @@
   <meta name="theme-color" content="#123f2c" />
   <meta name="color-scheme" content="light" />
   <meta name="description" content="[MD] Universal Markdown — локальная конвертация документов, OCR и подготовка Markdown для ChatGPT и Claude прямо в браузере." />
+  <title>[MD] Документы · Universal Tools</title>
   <link rel="manifest" href="./manifest.webmanifest" />
   <link rel="icon" href="./icons/icon-192.png" />
   <link rel="apple-touch-icon" href="./icons/icon-192.png" />
-  <title>[MD] Universal Markdown</title>
+  <link rel="stylesheet" href="./common.css" />
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
@@ -26,29 +27,29 @@
     </header>
 
     <section class="hero">
-      <div class="eyebrow">[MD] · browser utility</div>
-      <h1>Документ → чистый Markdown → готово для LLM.</h1>
-      <p>DOCX, PDF, PPTX, XLSX, HTML, CSV, TXT и изображения. OCR для сканов, очистка структуры и разбиение больших документов — <strong>без загрузки ваших файлов на сервер.</strong></p>
-      <div class="hero-install"><button class="ghost-btn hidden" id="installBtn" type="button">Установить приложение</button></div>
+      <div class="eyebrow"><span class="pulse"></span>[MD] · Документы</div>
+      <h1>Документ → Markdown.<br><em>Готово для LLM.</em></h1>
+      <p>DOCX, PDF, PPTX, XLSX, HTML, CSV, TXT и изображения. OCR для сканов, очистка структуры и разбиение больших документов — <b>без загрузки ваших файлов на сервер.</b></p>
+      <div class="hero-actions"><button class="btn pill hidden" id="installBtn" type="button">Установить приложение</button></div>
     </section>
 
-    <main class="app-card">
+    <main class="card">
       <div class="drop-wrap">
         <div class="drop-zone" id="dropZone">
           <div class="drop-content">
             <div class="drop-icon">↓</div>
             <h2>Перетащите документы сюда</h2>
             <p>или нажмите, чтобы выбрать один или несколько файлов</p>
-            <button class="pick-btn" type="button" tabindex="-1">Выбрать файлы</button>
+            <button class="btn dark" type="button" tabindex="-1">Выбрать файлы</button>
             <div class="formats">DOCX · PDF · PPTX · XLSX/XLS · HTML · CSV · TXT/MD · PNG/JPG/WEBP</div>
           </div>
-          <input id="fileInput" type="file" multiple accept=".docx,.pdf,.pptx,.xlsx,.xls,.html,.htm,.csv,.txt,.md,.markdown,.png,.jpg,.jpeg,.webp,.bmp" aria-label="Выбрать документы" />
+          <input id="fileInput" class="drop-input" type="file" multiple accept=".docx,.pdf,.pptx,.xlsx,.xls,.html,.htm,.csv,.txt,.md,.markdown,.png,.jpg,.jpeg,.webp,.bmp" aria-label="Выбрать документы" />
         </div>
       </div>
 
       <section class="controls">
         <div class="control-block wide">
-          <div class="control-label">Режим обработки</div>
+          <div class="field-label">Режим обработки</div>
           <div class="segmented" id="modeGroup">
             <button class="mode-btn active" data-mode="standard" type="button"><b>Standard</b><small>максимум исходной структуры</small></button>
             <button class="mode-btn" data-mode="clean" type="button"><b>Clean</b><small>убрать мусор и повторы</small></button>
@@ -57,7 +58,7 @@
         </div>
 
         <div class="control-block">
-          <label class="control-label" for="ocrMode">OCR</label>
+          <label class="field-label" for="ocrMode">OCR</label>
           <select id="ocrMode">
             <option value="auto" selected>Auto — только сканы</option>
             <option value="always">Всегда</option>
@@ -66,7 +67,7 @@
         </div>
 
         <div class="control-block">
-          <label class="control-label" for="ocrLang">Язык OCR</label>
+          <label class="field-label" for="ocrLang">Язык OCR</label>
           <select id="ocrLang">
             <option value="rus+eng" selected>Русский + English</option>
             <option value="rus">Русский</option>
@@ -75,7 +76,7 @@
         </div>
 
         <div class="control-block llm-only hidden" id="llmSetting">
-          <label class="control-label" for="chunkSize">Размер частей</label>
+          <label class="field-label" for="chunkSize">Размер частей</label>
           <select id="chunkSize">
             <option value="0">Не разбивать</option>
             <option value="10000">≈ 10K токенов</option>
@@ -91,7 +92,7 @@
         <aside class="sidebar">
           <div class="side-head">
             <strong>Файлы</strong>
-            <button class="small-btn" type="button" id="clearAll">Очистить</button>
+            <button class="btn subtle sm" type="button" id="clearAll">Очистить</button>
           </div>
           <div class="file-list" id="fileList"></div>
         </aside>
@@ -104,10 +105,10 @@
               <div class="progress-line hidden" id="progressLine"><span id="progressBar"></span></div>
             </div>
             <div class="actions">
-              <button class="action-btn" type="button" id="copyBtn">Копировать</button>
-              <button class="action-btn primary" type="button" id="downloadBtn">Скачать .md</button>
-              <button class="action-btn" type="button" id="bundleBtn">Bundle ZIP</button>
-              <button class="action-btn" type="button" id="zipBtn">Все файлы ZIP</button>
+              <button class="btn line" type="button" id="copyBtn">Копировать</button>
+              <button class="btn solid" type="button" id="downloadBtn">Скачать .md ↓</button>
+              <button class="btn line" type="button" id="bundleBtn">Bundle ZIP</button>
+              <button class="btn line" type="button" id="zipBtn">Все файлы ZIP</button>
             </div>
           </div>
 
@@ -126,20 +127,23 @@
       </section>
     </main>
 
-    <section style="margin:22px 0 0;padding:22px 24px;border:1px solid #dce3dd;border-radius:18px;background:#fff;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap"><div><b style="font-size:16px">[IMG] Photo Studio</b><p style="margin:5px 0 0;color:#68756c;font-size:12px">Удаляйте метаданные, конвертируйте, обрезайте и редактируйте фотографии прямо в браузере.</p></div><a href="./photo.html" style="background:#174f36;color:white;border-radius:11px;padding:12px 18px;text-decoration:none;font-size:12px;font-weight:750">Открыть редактор фото →</a></section>
-
-    <section class="feature-grid">
-      <article><span>🔒</span><b>Документы не уходят на сервер</b><p>Содержимое файлов обрабатывается JavaScript/WASM локально в памяти браузера.</p></article>
-      <article><span>⌁</span><b>OCR для сканов</b><p>PDF без текстового слоя и фотографии страниц можно распознать прямо в браузере.</p></article>
-      <article><span>✦</span><b>LLM Ready</b><p>Удаляет повторяющиеся колонтитулы и номера страниц, нормализует текст и режет по логическим секциям.</p></article>
-      <article><span>▧</span><b>Markdown bundle</b><p>Изображения из DOCX/PPTX по возможности извлекаются в assets и экспортируются вместе с Markdown.</p></article>
+    <section class="promo">
+      <div><b>[IMG] Photo Studio</b><p>Удаляйте метаданные, конвертируйте, обрезайте и редактируйте фотографии прямо в браузере.</p></div>
+      <a class="btn solid" href="./photo.html">Открыть редактор фото →</a>
     </section>
 
-    <section class="privacy-note">
+    <section class="features">
+      <article><div class="num">01</div><b>Документы не уходят на сервер</b><p>Содержимое файлов обрабатывается JavaScript/WASM локально в памяти браузера.</p></article>
+      <article><div class="num">02</div><b>OCR для сканов</b><p>PDF без текстового слоя и фотографии страниц можно распознать прямо в браузере.</p></article>
+      <article><div class="num">03</div><b>LLM Ready</b><p>Удаляет повторяющиеся колонтитулы и номера страниц, нормализует текст и режет по логическим секциям.</p></article>
+      <article><div class="num">04</div><b>Markdown bundle</b><p>Изображения из DOCX/PPTX по возможности извлекаются в assets и экспортируются вместе с Markdown.</p></article>
+    </section>
+
+    <div class="footnote">
       <b>Важно про приватность.</b> Выбранные документы не отправляются на наш backend — его здесь нет. Внешние библиотеки и OCR-языковые модели загружаются с CDN; при первом OCR требуется интернет. После публикации на HTTPS сайт можно установить как PWA и часть ресурсов будет кэшироваться для повторного использования.
-    </section>
+    </div>
 
-    <footer>[MD] Universal Markdown · v2 · browser-first utility</footer>
+    <footer><span>[MD] Universal Markdown · Universal Tools</span><a href="./photo.html">Перейти к Photo Studio →</a></footer>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.10.0/mammoth.browser.min.js"></script>
@@ -151,6 +155,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/16.3.0/lib/marked.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.4.14/purify.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/tesseract.js@7.0.0/dist/tesseract.min.js"></script>
+  <script src="./common.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>

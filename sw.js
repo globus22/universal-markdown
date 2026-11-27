@@ -1,5 +1,11 @@
-const CACHE = 'md-universal-v2.2.0';
-const CORE = ['./','./index.html','./style.css','./app.js','./photo.html','./photo.css','./photo.js','./manifest.webmanifest','./icons/icon-192.png','./icons/icon-512.png'];
+const CACHE = 'universal-tools-v2.3.0';
+const CORE = [
+  './', './index.html', './photo.html',
+  './common.css', './common.js',
+  './style.css', './app.js',
+  './photo.css', './photo.js',
+  './manifest.webmanifest', './icons/icon-192.png', './icons/icon-512.png'
+];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(CORE)).then(() => self.skipWaiting()));
 });
