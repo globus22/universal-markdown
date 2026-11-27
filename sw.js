@@ -2,14 +2,16 @@
    Ядро сайта кэшируется при установке. Всё остальное с этого же сайта (библиотеки, OCR-модели,
    HEIC-декодер) — при первом использовании, после чего работает офлайн.
    При изменении файлов увеличьте версию CACHE. */
-const CACHE = 'universal-tools-v3.0.0';
+const CACHE = 'universal-tools-v4.0.0';
 const CORE = [
-  './', './index.html', './markdown.html', './photo.html',
-  './css/common.css', './css/hub.css', './css/markdown.css', './css/photo.css',
+  './', './index.html', './markdown.html', './photo.html', './qr.html', './card.html', './pdf.html',
+  './css/common.css', './css/hub.css', './css/markdown.css', './css/photo.css', './css/qr.css', './css/card.css', './css/pdf.css', './css/fonts.css',
   './js/common.js',
   './js/markdown/utils.js', './js/markdown/ocr.js', './js/markdown/transform.js',
   './js/markdown/formats-office.js', './js/markdown/formats-sheets.js', './js/markdown/formats-pdf.js', './js/markdown/app.js',
   './js/photo/metadata.js', './js/photo/app.js',
+  './js/shared/qr.js', './js/qr/app.js', './js/card/layout.js', './js/card/signature.js', './js/card/app.js', './js/pdf/app.js',
+  './vendor/qrcode.js', './vendor/qrcode_UTF8.js',
   './vendor/jszip.min.js', './vendor/exifr.js',
   './manifest.webmanifest', './icons/icon.svg', './icons/icon-192.png', './icons/icon-512.png'
 ];

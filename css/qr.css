@@ -1,0 +1,46 @@
+/* ==========================================================================
+   [QR] QR Studio — стили страницы qr.html
+   ========================================================================== */
+
+.qr-grid { display: grid; grid-template-columns: minmax(320px, 440px) minmax(0, 1fr); }
+.qr-form { padding: 20px; border-right: 1px solid var(--line); background: var(--panel-2); }
+
+.type-tabs { display: flex; flex-wrap: wrap; gap: 5px; }
+.type-tab { padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); color: var(--muted); font-size: 12px; font-weight: 750; }
+.type-tab:hover { color: var(--accent-text); border-color: var(--line-strong); }
+.type-tab.on { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+.type-fields { padding: 6px 0 18px; border-bottom: 1px solid var(--line); }
+
+.qr-sec { border-bottom: 1px solid var(--line); }
+.qr-sec summary { display: flex; align-items: center; padding: 16px 0; font-size: 13px; font-weight: 800; cursor: pointer; list-style: none; }
+.qr-sec summary::-webkit-details-marker { display: none; }
+.qr-sec summary::after { content: "⌄"; margin-left: auto; color: var(--muted); }
+.qr-sec[open] summary::after { content: "⌃"; }
+.qr-body { padding: 0 0 18px; }
+.qr-body > .two:first-child > .field { margin-top: 0; }
+.qr-form .colors { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.color input:disabled { opacity: .35; }
+.presets { display: flex; gap: 8px; margin-top: 14px; }
+.preset { width: 34px; height: 34px; border: 1px solid var(--line-strong); border-radius: 10px; }
+.preset:hover { transform: translateY(-1px); }
+
+.qr-preview { display: flex; flex-direction: column; gap: 14px; padding: 24px; background: var(--panel-3); }
+.qr-stage { display: grid; place-items: center; min-height: 380px; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--panel); }
+.qr-stage.checker { background: repeating-conic-gradient(var(--soft-2) 0% 25%, var(--panel-3) 0% 50%) 50% / 18px 18px; }
+.qr-stage svg { display: block; width: min(100%, 340px); height: auto; box-shadow: 0 10px 30px rgba(20, 40, 28, .10); }
+.qr-stage.empty svg { opacity: .18; filter: grayscale(1); }
+.qr-meta { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; color: var(--muted); font: 700 10px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+.qr-meta span { padding: 4px 9px; border-radius: 999px; background: var(--chip-bg); color: var(--chip-ink); }
+.qr-preview .notice { margin: 0; }
+.qr-export { padding: 16px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--panel); }
+.qr-export .field { margin-top: 0; }
+
+@media (max-width: 900px) {
+  .qr-grid { grid-template-columns: 1fr; }
+  .qr-form { border-right: 0; border-bottom: 1px solid var(--line); }
+  .qr-preview { order: -1; }
+  .qr-stage { min-height: 280px; }
+}
+@media (max-width: 620px) {
+  .qr-form, .qr-preview { padding: 14px; }
+}

@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#123f2c" />
+  <meta name="color-scheme" content="light dark" />
+  <title>[VCF] Визитка и подпись для писем · Universal Tools</title>
+  <meta name="description" content="Генератор визиток 90×50 мм с QR-контактом, цифровой визитки .vcf и подписи для Outlook, Gmail, Яндекса и Apple Mail. Свой логотип и цвета, бесплатно и без регистрации." />
+  <link rel="canonical" href="https://globus22.github.io/universal-markdown/card.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Universal Tools" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="[VCF] Визитка и подпись для писем · Universal Tools" />
+  <meta property="og:description" content="Генератор визиток 90×50 мм с QR-контактом, цифровой визитки .vcf и подписи для Outlook, Gmail, Яндекса и Apple Mail. Свой логотип и цвета, бесплатно и без регистрации." />
+  <meta property="og:url" content="https://globus22.github.io/universal-markdown/card.html" />
+  <meta property="og:image" content="https://globus22.github.io/universal-markdown/og/og-card.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
+  <link rel="icon" href="./icons/icon-192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+  <script>try{var t=localStorage.getItem('ut-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="./css/common.css" />
+  <link rel="stylesheet" href="./css/fonts.css" />
+  <link rel="stylesheet" href="./css/card.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">К содержимому</a>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Universal Tools — все инструменты">
+        <span class="mark" aria-hidden="true">[UT]</span>
+        <span><strong>Universal Tools</strong><small>browser-first · локально</small></span>
+      </a>
+      <div class="top-actions">
+        <nav class="nav" aria-label="Инструменты">
+          <a href="./">Все</a>
+          <a href="./markdown.html">Документы</a>
+          <a href="./photo.html">Фото</a>
+          <a href="./qr.html">QR</a>
+          <a href="./card.html" class="current" aria-current="page">Визитка</a>
+          <a href="./pdf.html">PDF</a>
+        </nav>
+        <button class="theme-btn" id="themeBtn" type="button" aria-label="Переключить тему" title="Светлая / тёмная тема"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow"><span class="pulse"></span>[VCF] · Визитка и подпись</div>
+      <h1>Визитка, QR и подпись.<br><em>Из одних данных.</em></h1>
+      <p>Печатная визитка 90×50 мм с QR-контактом, цифровая визитка .vcf и подпись для писем — для Outlook, Gmail, Яндекса, Apple Mail и других. Свой логотип и цвета, <b>данные хранятся только в вашем браузере.</b></p>
+      <div class="hero-actions"><button class="btn pill hidden" id="installBtn" type="button">Установить приложение</button></div>
+    </section>
+
+    <main class="card card-tool" id="main">
+      <div class="notice" id="notice" role="status" aria-live="polite"></div>
+      <div class="vc-grid">
+        <form class="vc-form" id="form" autocomplete="off" onsubmit="return false">
+
+          <details class="vc-sec" open><summary><span>01</span> Компания и стиль</summary><div class="vc-body">
+            <div class="two">
+              <label class="field">Компания<input type="text" id="company" placeholder="ООО «Ромашка»"></label>
+              <label class="field">Сайт<input type="text" id="site" placeholder="romashka.ru"></label>
+            </div>
+            <div class="logo-row">
+              <div class="logo-box" id="logoBox"><span>Логотип</span></div>
+              <div class="logo-actions">
+                <label class="btn line sm file-btn">Загрузить логотип<input type="file" id="logoInput" accept="image/png,image/jpeg,image/svg+xml,image/webp"></label>
+                <button type="button" class="link-btn" id="logoRemove">Убрать</button>
+                <p class="helper">PNG с прозрачным фоном или SVG. Без логотипа на визитке будет название компании.</p>
+              </div>
+            </div>
+            <div class="colors">
+              <label class="color">Акцент<input type="color" id="accent" value="#24A333"></label>
+              <label class="color">Имя<input type="color" id="nameColor" value="#0A5237"></label>
+              <label class="color">Текст<input type="color" id="textColor" value="#252525"></label>
+              <label class="color">QR сверху<input type="color" id="qrTop" value="#000000"></label>
+              <label class="color">QR снизу<input type="color" id="qrBottom" value="#00AF48"></label>
+            </div>
+            <label class="field">Шрифт<select id="font"><option value="montserrat">Montserrat — современный гротеск</option><option value="inter">Inter — нейтральный</option><option value="pt-serif">PT Serif — с засечками</option></select></label>
+          </div></details>
+
+          <details class="vc-sec" open><summary><span>02</span> Контакты</summary><div class="vc-body">
+            <p class="helper">Одни и те же контакты попадают на обе стороны, в QR-код и в подпись.</p>
+            <div class="two">
+              <label class="field">Мобильный<input type="text" id="mobile" class="phone" inputmode="tel" placeholder="+7 (900) 000-00-00"></label>
+              <label class="field">E-mail<input type="text" id="email" inputmode="email" placeholder="name@company.ru"></label>
+              <label class="field">Рабочий телефон<input type="text" id="work" class="phone" inputmode="tel" placeholder="+7 (495) 000-00-00"></label>
+              <label class="field">Добавочный<input type="text" id="ext" inputmode="numeric" placeholder="123"></label>
+              <label class="field">Telegram<input type="text" id="telegram" placeholder="@username"></label>
+              <label class="field">WeChat ID<input type="text" id="wechat" placeholder="username"></label>
+              <label class="field">WhatsApp — имя<input type="text" id="waUser" placeholder="username"></label>
+              <label class="field">WhatsApp — номер<input type="text" id="waPhone" class="phone" inputmode="tel" placeholder="только для QR"></label>
+            </div>
+          </div></details>
+
+          <details class="vc-sec" open><summary><span>03</span> Лицевая сторона</summary><div class="vc-body" data-side="0">
+            <div class="two">
+              <label class="field">Язык<select data-f="lang"><option value="ru">Русский</option><option value="en">English</option></select></label>
+              <label class="field">Компания на этой стороне<input type="text" data-f="company" placeholder="как в разделе 01"></label>
+            </div>
+            <label class="field">Фамилия Имя<input type="text" data-f="name" placeholder="Иванова Анна"></label>
+            <label class="field">Должность<input type="text" data-f="title" placeholder="Руководитель отдела продаж"></label>
+            <label class="field">Адрес<textarea data-f="address" rows="2" placeholder="Москва, ул. Примерная, д. 1"></textarea></label>
+            <p class="helper">Перенос строки в адресе = перенос строки на визитке.</p>
+          </div></details>
+
+          <details class="vc-sec" open><summary><span>04</span> Оборотная сторона</summary><div class="vc-body" data-side="1">
+            <label class="check"><input type="checkbox" data-f="enabled" checked> Двусторонняя визитка (например, на английском)</label>
+            <div class="side2-fields">
+              <div class="two">
+                <label class="field">Язык<select data-f="lang"><option value="en">English</option><option value="ru">Русский</option></select></label>
+                <label class="field">Company<input type="text" data-f="company" placeholder="Romashka LLC"></label>
+              </div>
+              <label class="field">Имя<input type="text" data-f="name" placeholder="Anna Ivanova"></label>
+              <label class="field">Должность<input type="text" data-f="title" placeholder="Head of Sales"></label>
+              <label class="field">Адрес<textarea data-f="address" rows="2" placeholder="1 Primernaya st., Moscow, Russia"></textarea></label>
+            </div>
+          </div></details>
+
+          <details class="vc-sec"><summary><span>05</span> QR-код и что показывать</summary><div class="vc-body">
+            <label class="field">QR-код на визитке<select id="qrMode">
+              <option value="vcard">Контакт целиком — сохраняется в телефон</option>
+              <option value="short">Контакт без адреса — код проще</option>
+              <option value="url">Ссылка на сайт</option>
+              <option value="none">Без QR-кода</option>
+            </select></label>
+            <div class="show-grid" id="showBox"></div>
+            <label class="check"><input type="checkbox" data-show="nameTwoLines"> Фамилию и имя — в две строки</label>
+            <label class="check"><input type="checkbox" data-show="underline" checked> Подчёркивать ники мессенджеров</label>
+            <label class="check"><input type="checkbox" data-show="side2Wechat"> На оборотной стороне вместо рабочего телефона — WeChat</label>
+          </div></details>
+
+          <details class="vc-sec"><summary><span>06</span> Размеры</summary><div class="vc-body">
+            <div id="designBox"></div>
+            <button type="button" class="btn line sm" id="designReset">Вернуть размеры по умолчанию</button>
+          </div></details>
+
+          <details class="vc-sec"><summary><span>07</span> Печать</summary><div class="vc-body">
+            <div class="two">
+              <label class="field">Раскладка<select id="printMode"><option value="single">Одна визитка на странице 90×50</option><option value="a4">Лист A4 с метками реза</option></select></label>
+              <label class="field" id="copiesWrap" hidden>Визиток на листе<select id="copies"><option value="10">10 (2×5)</option><option value="8">8 (2×4)</option><option value="6">6 (2×3)</option><option value="2">2 (2×1)</option></select></label>
+              <label class="field">Что печатать<select id="printSide"><option value="both">Все стороны</option><option value="0">Только лицевую</option><option value="1">Только оборотную</option></select></label>
+            </div>
+            <label class="check"><input type="checkbox" id="bleed"> Вылеты 3 мм (для типографии)</label>
+            <div class="row-btns"><button type="button" class="btn solid" id="printBtn">Печать / сохранить PDF</button><button type="button" class="btn line" id="resetAll">Очистить всё</button></div>
+            <p class="helper">Для типографии выбирайте «Сохранить как PDF» в окне печати: текст останется векторным.</p>
+          </div></details>
+        </form>
+
+        <aside class="vc-preview">
+          <div class="vc-sticky">
+            <div id="cardsBox"></div>
+            <div class="fit-note hidden" id="fitNote"></div>
+            <div class="digital">
+              <div><b>Цифровая визитка</b><span>Файл контакта и QR для экрана, презентации или бейджа</span></div>
+              <div class="row-btns"><button type="button" class="btn line sm" id="vcfBtn">Скачать .vcf</button><button type="button" class="btn line sm" id="qrPngBtn">QR в PNG</button></div>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <section class="sig" aria-labelledby="sigTitle">
+        <div class="sig-head">
+          <div><b id="sigTitle">Подпись для писем</b><span>Собирается из тех же данных. Выберите вариант и почтовую программу.</span></div>
+          <select id="sigPick" aria-label="Вариант подписи"></select>
+        </div>
+        <div class="sig-grid">
+          <div class="sig-preview" id="sigPreview"></div>
+          <div class="sig-install">
+            <div class="client-tabs" role="tablist" id="clientTabs"></div>
+            <div class="client-body" id="clientBody"></div>
+            <label class="field">Ссылка на логотип в интернете<input type="text" id="logoUrl" placeholder="https://site.ru/logo.png — необязательно"></label>
+            <p class="helper">Gmail, Яндекс и Mail.ru не сохраняют вставленные картинки. Если логотип лежит на вашем сайте, укажите ссылку — тогда он будет виден везде.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section class="features">
+      <article><div class="num">01</div><b>Готово для типографии</b><p>Векторный PDF через печать, вылеты 3 мм, лист A4 с метками реза, PNG 1200 dpi и SVG со встроенным шрифтом.</p></article>
+      <article><div class="num">02</div><b>QR сохраняет контакт</b><p>Наведите камеру — телефон предложит добавить контакт со всеми телефонами, почтой, сайтом и мессенджерами.</p></article>
+      <article><div class="num">03</div><b>Подпись везде</b><p>Установщик для Outlook на Windows и пошаговые инструкции для Gmail, Яндекса, Mail.ru, Apple Mail, Outlook для Mac и Thunderbird.</p></article>
+      <article><div class="num">04</div><b>Всё подгоняется само</b><p>Длинная должность или адрес? Размеры текста аккуратно уменьшатся, переносы — выровняются.</p></article>
+    </section>
+
+    <footer><span>[VCF] Визитка и подпись · <a href="./">Universal Tools</a></span><a href="./qr.html">Нужен отдельный QR-код? QR Studio →</a></footer>
+  </div>
+  <div id="printArea" aria-hidden="true"></div>
+  <style id="pageStyle">@page { size: 90mm 50mm; margin: 0 }</style>
+
+  <script src="./vendor/qrcode.js"></script>
+  <script src="./vendor/qrcode_UTF8.js"></script>
+  <script src="./vendor/jszip.min.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/shared/qr.js"></script>
+  <script src="./js/card/layout.js"></script>
+  <script src="./js/card/signature.js"></script>
+  <script src="./js/card/app.js"></script>
+</body>
+</html>

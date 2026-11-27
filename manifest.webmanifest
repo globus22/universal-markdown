@@ -1,7 +1,7 @@
 {
-  "name": "Universal Tools — документы и фото в браузере",
+  "name": "Universal Tools — документы, фото, QR, визитки и PDF",
   "short_name": "Universal Tools",
-  "description": "Документы в Markdown с OCR и очистка фото от метаданных — локально в браузере, без загрузки файлов на сервер.",
+  "description": "Документы в Markdown с OCR, обработка фото, QR-коды, визитки и подписи, PDF-инструменты — локально в браузере, без загрузки файлов на сервер.",
   "lang": "ru",
   "id": "./",
   "start_url": "./",
@@ -10,13 +10,86 @@
   "background_color": "#f4f6f2",
   "theme_color": "#123f2c",
   "icons": [
-    {"src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
-    {"src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
-    {"src": "./icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
-    {"src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
   ],
   "shortcuts": [
-    {"name": "[MD] Документы → Markdown", "short_name": "Документы", "url": "./markdown.html", "icons": [{"src": "./icons/icon-192.png", "sizes": "192x192"}]},
-    {"name": "[IMG] Photo Studio", "short_name": "Фото", "url": "./photo.html", "icons": [{"src": "./icons/icon-192.png", "sizes": "192x192"}]}
+    {
+      "name": "[MD] Документы → Markdown",
+      "short_name": "Документы",
+      "url": "./markdown.html",
+      "icons": [
+        {
+          "src": "./icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "[IMG] Photo Studio",
+      "short_name": "Фото",
+      "url": "./photo.html",
+      "icons": [
+        {
+          "src": "./icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "[QR] QR Studio",
+      "short_name": "QR",
+      "url": "./qr.html",
+      "icons": [
+        {
+          "src": "./icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "[VCF] Визитка и подпись",
+      "short_name": "Визитка",
+      "url": "./card.html",
+      "icons": [
+        {
+          "src": "./icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "[PDF] PDF-инструменты",
+      "short_name": "PDF",
+      "url": "./pdf.html",
+      "icons": [
+        {
+          "src": "./icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
   ]
 }
