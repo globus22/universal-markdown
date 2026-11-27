@@ -55,29 +55,6 @@ details[open] summary::after { content: "⌃"; }
 .tool-btn:hover { border-color: var(--line-strong); }
 .tool-btn small { display: block; color: var(--muted); font-size: 9px; }
 
-.field {
-  display: block;
-  margin: 12px 0 0;
-  color: var(--muted);
-  font-size: 10px;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: .08em;
-}
-.field select, .field input { margin-top: 6px; text-transform: none; letter-spacing: 0; font-weight: 400; }
-.field input[type=color] {
-  display: block;
-  width: 100%;
-  height: 38px;
-  padding: 3px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: var(--panel);
-}
-.check { display: flex; align-items: center; gap: 7px; margin-top: 12px; color: var(--muted); font-size: 11px; }
-.range-label { display: flex; justify-content: space-between; gap: 10px; margin: 14px 0 5px; color: var(--muted); font-size: 11px; font-weight: 700; }
-.range-label output { color: var(--accent-text); }
-.helper { color: var(--muted); font-size: 10px; line-height: 1.6; }
 .sidebar .btn.full { margin-top: 7px; }
 .apply-all { margin-top: 20px !important; }
 

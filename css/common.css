@@ -225,6 +225,52 @@ select:focus, input[type=text]:focus, input[type=number]:focus { border-color: v
 input[type=range], input[type=checkbox] { accent-color: var(--accent); }
 input[type=range] { width: 100%; }
 
+
+/* ---------- Подписанные поля форм (общие для инструментов) ---------- */
+.field {
+  display: block;
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+}
+.field select, .field input, .field textarea { margin-top: 6px; text-transform: none; letter-spacing: 0; font-weight: 400; }
+.field input[type=color] {
+  display: block;
+  width: 100%;
+  height: 38px;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--panel);
+}
+.check { display: flex; align-items: center; gap: 7px; margin-top: 12px; color: var(--muted); font-size: 11px; }
+.range-label { display: flex; justify-content: space-between; gap: 10px; margin: 14px 0 5px; color: var(--muted); font-size: 11px; font-weight: 700; }
+.range-label output { color: var(--accent-text); }
+.helper { color: var(--muted); font-size: 10px; line-height: 1.6; }
+textarea { width: 100%; min-width: 0; padding: 9px 11px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel); color: var(--ink); font-size: 12px; line-height: 1.45; resize: vertical; outline: none; }
+textarea:focus { border-color: var(--accent-text); box-shadow: 0 0 0 3px var(--bg-glow); }
+.two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 10px; }
+.row-btns { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+code { padding: 1px 5px; border-radius: 5px; background: var(--soft); font: 11px var(--mono); overflow-wrap: anywhere; }
+
+/* ---------- Логотип и цвета (визитка, QR) ---------- */
+.logo-row { display: flex; gap: 14px; align-items: center; margin-top: 14px; }
+.logo-box { display: grid; place-items: center; flex: 0 0 120px; height: 64px; padding: 8px; border: 1.5px dashed var(--dash); border-radius: var(--radius); background: #fff; color: #8a958d; font-size: 11px; }
+.logo-box.has { border-style: solid; border-color: var(--line); }
+.logo-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.logo-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.logo-actions .helper { margin: 0; }
+.file-btn { position: relative; overflow: hidden; cursor: pointer; }
+.file-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+
+.colors { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-top: 14px; }
+.color { display: flex; flex-direction: column; gap: 6px; color: var(--muted); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+.color input { width: 100%; height: 34px; padding: 3px; border: 1px solid var(--line); border-radius: 9px; background: var(--panel); cursor: pointer; }
+
+
 /* ---------- Уведомления ---------- */
 .notice { display: none; margin: 0 24px 20px; padding: 12px 14px; border: 1px solid transparent; border-radius: var(--radius); font-size: 12px; line-height: 1.5; }
 .notice.show { display: block; }
@@ -292,8 +338,9 @@ footer a:hover { text-decoration: underline; }
 @media (max-width: 680px) {
   .topbar { flex-direction: column; align-items: stretch; margin-bottom: 30px; }
   .top-actions { width: 100%; }
-  .nav { flex: 1; }
-  .nav a { flex: 1; padding: 10px 8px; text-align: center; }
+  .nav { flex: 1; min-width: 0; overflow-x: auto; scrollbar-width: none; }
+  .nav::-webkit-scrollbar { display: none; }
+  .nav a { flex: 1 0 auto; padding: 10px 11px; text-align: center; }
   .mark { width: 48px; height: 48px; font-size: 14px; }
   .hero h1 { font-size: 42px; }
   .features:not(.cols-3), .features.cols-3 { grid-template-columns: 1fr; }
