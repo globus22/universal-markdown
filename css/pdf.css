@@ -1,0 +1,57 @@
+/* ==========================================================================
+   [PDF] PDF-инструменты — стили страницы pdf.html
+   ========================================================================== */
+
+.pdf-work { border-top: 1px solid var(--line); }
+.pdf-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; padding: 16px 22px 0; }
+.pdf-toolbar .row-btns { margin: 0; }
+.pdf-count { display: flex; align-items: baseline; gap: 10px; }
+.pdf-count b { color: var(--accent-text); font-size: 15px; }
+.pdf-count span:last-child { color: var(--muted); font-size: 11px; }
+.section-kicker { font: 800 10px var(--mono); text-transform: uppercase; letter-spacing: .11em; color: var(--muted); }
+.pdf-hint { margin: 6px 22px 0; }
+
+.pages { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 14px; padding: 16px 22px 22px; }
+.page { position: relative; padding: 8px; border: 1.5px solid var(--line); border-radius: var(--radius); background: var(--panel); cursor: pointer; user-select: none; transition: border-color .15s, box-shadow .15s, transform .15s; }
+.page:hover { border-color: var(--line-strong); }
+.page.selected { border-color: var(--accent-text); box-shadow: 0 0 0 2px var(--accent-text); }
+.page.dragging { opacity: .4; }
+.page.drop-before { box-shadow: -4px 0 0 var(--accent-text); }
+.page.drop-after { box-shadow: 4px 0 0 var(--accent-text); }
+.thumb { display: grid; place-items: center; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 6px; background: var(--panel-3); }
+.thumb img { max-width: 100%; max-height: 100%; box-shadow: 0 1px 4px rgba(0, 0, 0, .15); background: #fff; transition: transform .2s; }
+.thumb.loading { background: linear-gradient(90deg, var(--panel-3), var(--soft), var(--panel-3)); background-size: 200% 100%; animation: shimmer 1.2s infinite linear; }
+.thumb.loading img { visibility: hidden; }
+@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+.page-foot { display: flex; align-items: center; gap: 6px; margin-top: 7px; min-width: 0; font-size: 11px; }
+.page-foot b { font: 800 11px var(--mono); color: var(--accent-text); }
+.page-foot span { overflow: hidden; color: var(--muted); font-size: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.page-tools { position: absolute; top: 12px; right: 12px; display: flex; gap: 4px; opacity: 0; transition: opacity .15s; }
+.page:hover .page-tools, .page:focus-within .page-tools { opacity: 1; }
+.page-tools button { display: grid; place-items: center; width: 26px; height: 26px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); font-size: 13px; box-shadow: var(--shadow-sm); }
+.page-tools button:hover { color: var(--accent-text); }
+.page-tools button[data-act="del"]:hover { color: var(--danger); }
+.tick { position: absolute; top: 12px; left: 12px; display: none; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: var(--on-accent); font-size: 12px; font-weight: 800; }
+.page.selected .tick { display: grid; }
+@media (hover: none) { .page-tools { opacity: 1; } }
+
+.pdf-actions { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--line); background: var(--panel-3); }
+.act { display: flex; flex-direction: column; gap: 4px; padding: 18px 20px; border-right: 1px solid var(--line); }
+.act:last-child { border-right: 0; }
+.act > b { font-size: 14px; }
+.act > span { min-height: 48px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.act .row-btns { margin-top: auto; padding-top: 12px; }
+
+@media (max-width: 1100px) {
+  .pdf-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .act:nth-child(2) { border-right: 0; }
+  .act:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 620px) {
+  .pdf-toolbar, .pages { padding-left: 14px; padding-right: 14px; }
+  .pdf-hint { margin: 6px 14px 0; }
+  .pages { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; }
+  .pdf-actions { grid-template-columns: 1fr; }
+  .act { border-right: 0; border-bottom: 1px solid var(--line); }
+  .act > span { min-height: 0; }
+}

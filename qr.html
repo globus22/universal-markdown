@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#123f2c" />
+  <meta name="color-scheme" content="light dark" />
+  <title>[QR] QR Studio — генератор QR-кодов · Universal Tools</title>
+  <meta name="description" content="Бесплатный генератор QR-кодов: ссылка, Wi-Fi, контакт, почта, телефон, геоточка, Telegram, WhatsApp. Цвета, форма точек, логотип, SVG и PNG до 4096 px." />
+  <link rel="canonical" href="https://globus22.github.io/universal-markdown/qr.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Universal Tools" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="[QR] QR Studio — генератор QR-кодов · Universal Tools" />
+  <meta property="og:description" content="Бесплатный генератор QR-кодов: ссылка, Wi-Fi, контакт, почта, телефон, геоточка, Telegram, WhatsApp. Цвета, форма точек, логотип, SVG и PNG до 4096 px." />
+  <meta property="og:url" content="https://globus22.github.io/universal-markdown/qr.html" />
+  <meta property="og:image" content="https://globus22.github.io/universal-markdown/og/og-qr.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" href="./icons/icon.svg" type="image/svg+xml" />
+  <link rel="icon" href="./icons/icon-192.png" sizes="192x192" />
+  <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+  <script>try{var t=localStorage.getItem('ut-theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="./css/common.css" />
+  <link rel="stylesheet" href="./css/qr.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">К содержимому</a>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Universal Tools — все инструменты">
+        <span class="mark" aria-hidden="true">[UT]</span>
+        <span><strong>Universal Tools</strong><small>browser-first · локально</small></span>
+      </a>
+      <div class="top-actions">
+        <nav class="nav" aria-label="Инструменты">
+          <a href="./">Все</a>
+          <a href="./markdown.html">Документы</a>
+          <a href="./photo.html">Фото</a>
+          <a href="./qr.html" class="current" aria-current="page">QR</a>
+          <a href="./card.html">Визитка</a>
+          <a href="./pdf.html">PDF</a>
+        </nav>
+        <button class="theme-btn" id="themeBtn" type="button" aria-label="Переключить тему" title="Светлая / тёмная тема"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow"><span class="pulse"></span>[QR] · QR Studio</div>
+      <h1>QR-код за минуту.<br><em>Красивый и рабочий.</em></h1>
+      <p>Ссылка, Wi-Fi, контакт, почта, телефон, геоточка или мессенджер. Свои цвета, форма точек, логотип в центре и подпись под кодом — <b>без регистрации и без «вечных» ссылок-посредников.</b></p>
+      <div class="hero-actions"><button class="btn pill hidden" id="installBtn" type="button">Установить приложение</button></div>
+    </section>
+
+    <main class="card" id="main">
+      <div class="qr-grid">
+        <div class="qr-form">
+          <div class="type-tabs" role="tablist" id="typeTabs"></div>
+          <form id="dataForm" class="type-fields" autocomplete="off" onsubmit="return false"></form>
+
+          <details class="qr-sec" open><summary><span>Дизайн</span></summary><div class="qr-body">
+            <div class="two">
+              <label class="field">Форма точек<select id="style"><option value="square">Квадраты</option><option value="rounded">Скруглённые</option><option value="dots">Точки</option></select></label>
+              <label class="field">Угловые метки<select id="eye"><option value="square">Квадратные</option><option value="rounded">Скруглённые</option><option value="circle">Круглые</option></select></label>
+            </div>
+            <div class="colors">
+              <label class="color">Цвет<input type="color" id="color" value="#132018"></label>
+              <label class="color">Градиент к<input type="color" id="color2" value="#174f36"></label>
+              <label class="color">Фон<input type="color" id="bg" value="#ffffff"></label>
+            </div>
+            <label class="check"><input type="checkbox" id="useGradient"> Градиент сверху вниз</label>
+            <label class="check"><input type="checkbox" id="transparent"> Прозрачный фон (для PNG и SVG)</label>
+            <div class="presets" id="presets" aria-label="Готовые сочетания цветов"></div>
+          </div></details>
+
+          <details class="qr-sec"><summary><span>Логотип и подпись</span></summary><div class="qr-body">
+            <div class="logo-row">
+              <div class="logo-box" id="logoBox"><span>Логотип</span></div>
+              <div class="logo-actions">
+                <label class="btn line sm file-btn">Загрузить<input type="file" id="logoInput" accept="image/*"></label>
+                <button type="button" class="link-btn" id="logoRemove">Убрать</button>
+              </div>
+            </div>
+            <label class="range-label" for="logoSize"><span>Размер логотипа</span><output id="logoSizeVal">22%</output></label>
+            <input type="range" id="logoSize" min="12" max="30" value="22">
+            <label class="field">Подпись под кодом<input type="text" id="caption" maxlength="40" placeholder="Например: Наведите камеру"></label>
+          </div></details>
+
+          <details class="qr-sec"><summary><span>Надёжность и отступ</span></summary><div class="qr-body">
+            <label class="field">Коррекция ошибок<select id="ecc"><option value="auto">Авто (H с логотипом, иначе M)</option><option value="L">L — 7%, самый простой код</option><option value="M">M — 15%</option><option value="Q">Q — 25%</option><option value="H">H — 30%, лучше для печати</option></select></label>
+            <label class="range-label" for="quiet"><span>Белое поле вокруг</span><output id="quietVal">4 модуля</output></label>
+            <input type="range" id="quiet" min="0" max="8" value="4">
+          </div></details>
+        </div>
+
+        <aside class="qr-preview">
+          <div class="qr-stage" id="stage"><div id="qrOut"></div></div>
+          <div class="qr-meta" id="meta"></div>
+          <div class="notice" id="warn" role="status"></div>
+          <div class="qr-export">
+            <label class="field">Размер PNG<select id="pngSize"><option value="512">512 px — экран</option><option value="1024" selected>1024 px</option><option value="2048">2048 px — печать</option><option value="4096">4096 px — крупная печать</option></select></label>
+            <div class="row-btns">
+              <button type="button" class="btn solid" id="pngBtn">Скачать PNG ↓</button>
+              <button type="button" class="btn line" id="svgBtn">SVG</button>
+              <button type="button" class="btn line" id="jpgBtn">JPG</button>
+              <button type="button" class="btn line" id="copyBtn">Копировать</button>
+            </div>
+            <p class="helper">SVG — векторный: подходит для типографии и любого размера. Код статический и не перестанет работать: в нём нет ссылок на сторонние сервисы.</p>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <section class="features">
+      <article><div class="num">01</div><b>Навсегда</b><p>Данные зашиты прямо в код. Никаких коротких ссылок, подписок и «код перестал работать через месяц».</p></article>
+      <article><div class="num">02</div><b>10 типов</b><p>Ссылка, текст, Wi-Fi, контакт, почта, звонок, SMS, геоточка, Telegram и WhatsApp.</p></article>
+      <article><div class="num">03</div><b>Проверка читаемости</b><p>Предупредим, если цвета слишком бледные, а логотип слишком крупный для надёжного сканирования.</p></article>
+      <article><div class="num">04</div><b>Для печати</b><p>SVG без потери качества и PNG до 4096 px. Визитку с QR-контактом удобнее делать в <a href="./card.html">генераторе визиток</a>.</p></article>
+    </section>
+
+    <footer><span>[QR] QR Studio · <a href="./">Universal Tools</a></span><a href="./card.html">Визитка с QR-контактом →</a></footer>
+  </div>
+
+  <script src="./vendor/qrcode.js"></script>
+  <script src="./vendor/qrcode_UTF8.js"></script>
+  <script src="./js/common.js"></script>
+  <script src="./js/shared/qr.js"></script>
+  <script src="./js/qr/app.js"></script>
+</body>
+</html>

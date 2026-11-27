@@ -20,6 +20,10 @@
   media?.addEventListener?.('change', syncThemeColor);
   syncThemeColor();
 
+  /* ---------- Меню: на узком экране прокручиваем к текущему инструменту ---------- */
+  const nav = document.querySelector('.nav'), cur = nav?.querySelector('a.current');
+  if (nav && cur && nav.scrollWidth > nav.clientWidth) nav.scrollLeft = cur.offsetLeft - (nav.clientWidth - cur.offsetWidth) / 2;
+
   /* ---------- Установка приложения ---------- */
   const installBtn = document.getElementById('installBtn');
   let installPrompt = null;

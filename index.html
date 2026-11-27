@@ -6,13 +6,13 @@
   <meta name="theme-color" content="#123f2c" />
   <meta name="color-scheme" content="light dark" />
   <title>Universal Tools — браузерные утилиты для документов и фото</title>
-  <meta name="description" content="Бесплатные инструменты в браузере: документы в Markdown с OCR, очистка и обработка фото. Без регистрации и без загрузки файлов на сервер." />
+  <meta name="description" content="Бесплатные инструменты в браузере: документы в Markdown с OCR, обработка фото, QR-коды, визитки и подписи, PDF. Без регистрации и без загрузки файлов на сервер." />
   <link rel="canonical" href="https://globus22.github.io/universal-markdown/" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Universal Tools" />
   <meta property="og:locale" content="ru_RU" />
   <meta property="og:title" content="Universal Tools — браузерные утилиты для документов и фото" />
-  <meta property="og:description" content="Бесплатные инструменты в браузере: документы в Markdown с OCR, очистка и обработка фото. Без регистрации и без загрузки файлов на сервер." />
+  <meta property="og:description" content="Бесплатные инструменты в браузере: документы в Markdown с OCR, обработка фото, QR-коды, визитки и подписи, PDF. Без регистрации и без загрузки файлов на сервер." />
   <meta property="og:url" content="https://globus22.github.io/universal-markdown/" />
   <meta property="og:image" content="https://globus22.github.io/universal-markdown/og/og-hub.png" />
   <meta property="og:image:width" content="1200" />
@@ -37,8 +37,11 @@
       <div class="top-actions">
         <nav class="nav" aria-label="Инструменты">
           <a href="./" class="current" aria-current="page">Все</a>
-          <a href="./markdown.html">[MD] Документы</a>
-          <a href="./photo.html">[IMG] Фото</a>
+          <a href="./markdown.html">Документы</a>
+          <a href="./photo.html">Фото</a>
+          <a href="./qr.html">QR</a>
+          <a href="./card.html">Визитка</a>
+          <a href="./pdf.html">PDF</a>
         </nav>
         <button class="theme-btn" id="themeBtn" type="button" aria-label="Переключить тему" title="Светлая / тёмная тема"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3.5a8.5 8.5 0 0 1 0 17z" fill="currentColor"/></svg></button>
       </div>
@@ -47,7 +50,7 @@
     <section class="hero">
       <div class="eyebrow"><span class="pulse"></span>Universal Tools · browser-first</div>
       <h1>Маленькие инструменты.<br><em>Файлы остаются у вас.</em></h1>
-      <p>Бесплатные утилиты для документов и фото, которые работают прямо в браузере. Без регистрации, без установки и <b>без загрузки файлов на сервер.</b></p>
+      <p>Бесплатные утилиты для документов, фото, QR-кодов, визиток и PDF — прямо в браузере. Без регистрации, без установки и <b>без загрузки файлов на сервер.</b></p>
       <div class="hero-actions"><button class="btn pill hidden" id="installBtn" type="button">Установить приложение</button></div>
     </section>
 
@@ -71,30 +74,33 @@
           </span>
           <span class="tool-go" aria-hidden="true">→</span>
         </a>
-        <div class="tool soon" id="qrTool">
+        <a class="tool" href="./qr.html">
           <span class="tool-mark">[QR]</span>
           <span class="tool-body">
-            <b>Universal QR Studio</b>
-            <span>QR-коды для ссылок, Wi-Fi, контактов и визиток с настройкой дизайна.</span>
-            <span class="tool-tags"><i>Скоро здесь</i></span>
+            <b>QR Studio</b>
+            <span>Ссылка, Wi-Fi, контакт, почта, геоточка, мессенджеры. Свои цвета, форма точек, логотип и подпись.</span>
+            <span class="tool-tags"><i>10 типов</i><i>SVG</i><i>Логотип</i></span>
           </span>
-        </div>
-        <div class="tool soon">
+          <span class="tool-go" aria-hidden="true">→</span>
+        </a>
+        <a class="tool" href="./card.html">
           <span class="tool-mark">[VCF]</span>
           <span class="tool-body">
-            <b>Цифровая визитка</b>
-            <span>Генератор vCard: контакт, который сохраняется в телефон одним касанием.</span>
-            <span class="tool-tags"><i>В разработке</i></span>
+            <b>Визитка и подпись</b>
+            <span>Визитка 90×50 с QR-контактом, файл .vcf и подпись для Outlook, Gmail, Яндекса и Apple Mail.</span>
+            <span class="tool-tags"><i>Печать</i><i>vCard</i><i>Подписи</i></span>
           </span>
-        </div>
-        <div class="tool soon">
+          <span class="tool-go" aria-hidden="true">→</span>
+        </a>
+        <a class="tool" href="./pdf.html">
           <span class="tool-mark">[PDF]</span>
           <span class="tool-body">
             <b>PDF-инструменты</b>
-            <span>Склеить, разделить, повернуть и сжать PDF — тоже без загрузки на сервер.</span>
-            <span class="tool-tags"><i>В планах</i></span>
+            <span>Склеить, разделить, повернуть и переставить страницы, картинки в PDF и обратно, сжать сканы.</span>
+            <span class="tool-tags"><i>Склейка</i><i>Сжатие</i><i>JPG ↔ PDF</i></span>
           </span>
-        </div>
+          <span class="tool-go" aria-hidden="true">→</span>
+        </a>
       </section>
     </main>
 
